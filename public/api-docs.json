@@ -4,7 +4,7 @@
         "description": "This is a collection of delicious foods around the world. \n Feel free to add yours",
         "version": "1.0.0",
         "title": "Delicious Foods REST API",
-        "termsOfService": "http://firdiansyah.github.io/rails-rest-api",
+        "termsOfService": "",
         "contact": {
             "name": "akbar.firdiansyah@gmail.com"
         },
@@ -13,7 +13,7 @@
             "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
         }
     },
-    "host": "localhost:3000",
+    "host": "https://desolate-citadel-14304.herokuapp.com",
     "basePath": "/api/v1/",
     "schemes": [
         "http"
