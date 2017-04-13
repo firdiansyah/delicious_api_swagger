@@ -16,12 +16,10 @@ Feel free to add your favorite foods.
 - PUT snacks/restore => Clear current database, and refill with original datas
 
 ### Prerequisites
-```
 [Ruby v.2.4.0](https://www.ruby-lang.org) - Beautiful and robust programming language
-[Ruby on Rails v.5.0.2] (rubyonrails.org) - Bring happiness on your web apps development
+[Ruby on Rails v.5.0.2](rubyonrails.org) - Bring happiness on your web apps development
 [RubyGems](https://rubygems.org/) - Install gem for your RoR apps
 [Bundler](https://bundler.io) - The best way to manages your ruby gems
-```
 
 ### Installing
 Clone this repo
