@@ -1,0 +1,276 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "This is a collection of delicious foods around the world. \n Feel free to add yours",
+        "version": "1.0.0",
+        "title": "Delicious Foods REST API",
+        "termsOfService": "http://firdiansyah.github.io/rails-rest-api",
+        "contact": {
+            "name": "akbar.firdiansyah@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+    },
+    "host": "localhost:3000",
+    "basePath": "/api/v1/",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/snacks": {
+            "get": {
+                "summary": "Finds snacks",
+                "description": "Get all snacks from database",
+                "operationId": "findsnacks",
+                "produces": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/snack"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid origin value"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Add a new snacks to the database",
+                "description": "",
+                "operationId": "addSnack",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Snacks object that needs to be added to the store",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/snack"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/snack"
+                            }
+                        }
+                    },
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            },
+        },
+        "/snacks/findByOrigin/{snackOrigin}": {
+            "get": {
+                "summary": "Finds snacks by origin",
+                "description": "Multiple origins values can be provided with comma seperated strings",
+                "operationId": "findSnacksByOrigin",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "snackOrigin",
+                        "description": "Status values that need to be considered for filter",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/snack"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid origin value"
+                    }
+                }
+            }
+        },
+        "/snacks/{snackId}": {
+            "get": {
+                "summary": "Find snack by ID",
+                "description": "Returns a snack when ID < 10.  ID > 10 or nonintegers will simulate API error conditions",
+                "operationId": "getsnackById",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "snackId",
+                        "description": "ID of snack that needs to be fetched",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/snack"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid ID supplied"
+                    },
+                    "404": {
+                        "description": "Record not found"
+                    }
+                }
+            },
+            "put": {
+                "summary": "Updates a snack in the store with form data",
+                "description": "",
+                "operationId": "updatesnackWithForm",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "snackId",
+                        "description": "ID of snack that needs to be updated",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Updated name of the snack",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/snack"
+                        }
+                    }
+                ],
+                "responses": {
+                  "200": {
+                      "description": "successful operation",
+                      "schema": {
+                          "type": "array",
+                          "items": {
+                              "$ref": "#/definitions/snack"
+                          }
+                      }
+                  },
+                  "404": {
+                      "description": "Snack not found"
+                  },
+                  "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete a snack in the store",
+                "description": "",
+                "operationId": "deleteSnackByID",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "snackId",
+                        "description": "ID of snack that needs to be deleted",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                  "200": {
+                      "description": "Successful operation",
+                  },
+                    "404": {
+                        "description": "Snacks not found"
+                    }
+                }
+            }
+        },
+        "/snacks/restore": {
+            "put": {
+                "summary": "Restore original snacks datas",
+                "description": "Delete current records, and restore original",
+                "operationId": "restoreSnacks",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/snack"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid origin value"
+                    }
+                }
+            }
+        },
+    },
+    "definitions": {
+        "snack": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "example": "Onde-onde"
+                },
+                "description": {
+                    "type": "string",
+                    "example": "Snacks with green bean inside"
+                },
+                "origin": {
+                    "type": "string",
+                    "example": "Indonesia"
+                },
+                "pict_url": {
+                    "type": "string",
+                    "example": "http://upload.wikipedia.org/onde.png"
+                },
+                "price": {
+                    "type": "integer",
+                    "example": "5000"
+                }
+            }
+        }
+    }
+}
