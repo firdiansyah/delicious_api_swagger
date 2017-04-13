@@ -12,16 +12,8 @@
 
 ActiveRecord::Schema.define(version: 20170412120716) do
 
-  create_table "main_courses", force: :cascade do |t|
-    t.string   "name"
-    t.string   "description"
-    t.string   "pict_url"
-    t.string   "string"
-    t.string   "origin"
-    t.integer  "price"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "snacks", force: :cascade do |t|
     t.string   "name"
@@ -32,14 +24,6 @@ ActiveRecord::Schema.define(version: 20170412120716) do
     t.integer  "price"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "age"
-    t.integer  "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
 end
