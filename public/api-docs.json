@@ -14,7 +14,7 @@
         }
     },
     "host": "desolate-citadel-14304.herokuapp.com",
-    "basePath": "/api/v1",
+    "basePath": "/api/v1/",
     "schemes": [
         "https"
     ],
