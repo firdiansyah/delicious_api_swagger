@@ -59,7 +59,7 @@ class Api::V1::SnacksController < ApplicationController
     if @api_v1_snack.update(api_v1_snack_params)
       render json: {
         status: 200,
-        message: "Successfully deleted snack",
+        message: "Successfully update snack",
         data: @api_v1_snack
       }.to_json
     else
